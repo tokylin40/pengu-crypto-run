@@ -3,7 +3,7 @@
 First prototype, 2026-10-01. Static canvas game, no build or installation required.
 
 ## Agreed scope
-30-second three-lane runner. Keyboard arrows/A/D, touch swipe and on-screen buttons. Toys at 0–10s, token airdrop at 10–20s, bear chase at 20–27s, dream finish at 27–30s. Three lives, shield, collision drawdown, combo bonuses, local peak record, PNG result card, X share composer. GitHub Pages publishes the root index.html, with no build step. Fan creation, not official.
+30-second three-lane runner. Keyboard arrows/A/D and direct lane taps/clicks; no lower arrow buttons. Toys at 0–10s, token airdrop at 10–20s, bear chase at 20–27s, dream finish at 27–30s. Three lives, shield, collision drawdown, combo bonuses, local peak record, PNG result card, X share composer. GitHub Pages publishes the root index.html, with no build step. Fan creation, not official.
 
 Start price is the user's hypothetical $0.009, not a live quote. $1 is a difficult game target; the run continues until 30 seconds even beyond $1. Simulation market cap uses a fixed supply of 62.86 billion PENGU and reference market caps PEPE $1,801,937,575, DOGE $14,787,233,434, from retrieved CoinGecko pages on 2026-10-01. Thus these thresholds occur before $1. Page contains links and labels; no automatic market updates.
 
@@ -51,3 +51,13 @@ Live v4 scale inspection also found the enlarged atlas feet overlapping the prog
 The generated second row begins slightly before the nominal 512px grid boundary. Canvas/preview source windows use 496px row height and 500px second-row origin to preserve the hat while excluding the adjacent-row strip. This is a render crop; the source image is retained.
 
 Added another 4% anchor clearance for the 5px running bob. Six opaque pose bounds clear the progress overlay in the desktop canvas calculation.
+
+## Direct lane input and ten levels · v5
+
+Tap or click the left/middle/right third of the canvas to select that lane immediately, including a direct two-lane jump. Removed lower arrow buttons and swipe-only handling. Keyboard arrows/A/D remain. Ignore secondary touch pointers and right mouse clicks; ready/paused/result states cannot move. Progress overlay allows pointers through to the canvas. Tap feedback appears at the selected point.
+
+During the existing 30-second run, level increases every 3 seconds, capped at 10. Movement speed = 1 + 0.12 × (level − 1): 1.00× at level 1 through 2.08× at level 10. Row interval decreases from 0.900s to 0.576s. Entity age advances with the current speed, and rendering/collision use the same age to remain aligned. Rows spawn until 28.8s so the last level remains active. HUD shows level and speed; retry resets level 1. Price mapping, damage, shields and combo reward values are unchanged.
+
+Validation: `node tests.cjs`, both JavaScript syntax checks and diff check passed. Tests cover all ten levels, monotonic speed/spawn interval, high-level collision timing, price=$1 at 100 energy, phone/desktop pointer mapping (including edges/two-lane jump), secondary-touch/right-click guards, pause, keyboard and restart. Live desktop canvas input/rendering checked after deployment; physical phone performance still pending.
+
+Synthetic difficulty check, 300 runs per strategy (instant lane changes and hazard avoidance, not human playtesting): 35% reward-target strategy median $0.084, 0/300 reaching $1; 55% median $0.154, 0/300 reaching $1; perfect reward selection median $0.929, 105/300 reaching $1. This retains a reachable but demanding target; higher speed's human difficulty needs actual playtesting.

@@ -20,3 +20,7 @@
 @keyframes nft-run{0%{background-position:0% 0px}25%{background-position:50% 0px}50%{background-position:100% 0px}75%{background-position:0% calc(var(--sprite-size) * -.9765625)}100%{background-position:0% 0px}}
 @media(max-width:700px){.animated-preview{--sprite-size:125px;height:calc(var(--sprite-size) * .96875)}}
 @media(max-height:650px) and (min-width:701px){.animated-preview{--sprite-size:100px;height:calc(var(--sprite-size) * .96875)}}
+
+/* Direct lane taps and visible ten-level progression. */
+#game{cursor:crosshair;touch-action:none}.journey{pointer-events:none}.stage-label{display:flex;align-items:center;gap:12px;white-space:nowrap}.stage-label small{color:#ffe28a;letter-spacing:0;font-size:12px}.tap-hint{margin:0;color:#b9e6fa;font-size:13px;font-weight:800}.tap-hint span{margin-left:12px;color:#8ab9d6;font-size:12px}.below{min-height:27px}
+@media(max-width:700px){.tap-hint{text-align:center;font-size:12px}.tap-hint span{display:none}.stage-label{gap:8px}.stage-label small{font-size:11px}}
