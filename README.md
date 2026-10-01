@@ -24,4 +24,10 @@ Tony to try phone and PC: readability, swipe/keys, 30s tempo, difficulty and des
 
 ## GitHub Pages publishing
 Settings → Pages → Deploy from a branch → main → / (root).
-The GitHub export uses pengu.png in the root directory; no private Site metadata or credentials are included.
+The NFT edition uses nft-pengu.png, snow-world.png and game-atlas.png in the root directory; no private Site metadata or credentials are included.
+
+## NFT snow edition · v2
+
+User-supplied NFT is the reference for a transparent character cutout. Illustrated snowy valley and nine collectible/hazard sprites replace the prototype backdrop and emoji objects. Added falling snow, snow trails, collectible starbursts, combo feedback, rotating diamond shield, collision flash/shake, phase lighting and final sprint streaks. Mobile uses fewer particles; reduced-motion preferences disable shake, speed streaks and orbit motion. Rule changes are limited to a visual-effects event queue; price, difficulty, health and timing calculations are unchanged.
+
+Validation: both JavaScript syntax checks and engine event assertions passed. Desktop/mobile DOM mock smoke covers loaded artwork, canvas rendering, collect/shield/damage effects, start, pause/resume, game end and retry. Live GitHub Pages rendering and keyboard controls are verified after deployment; real iOS/Android device performance remains for playtesting.
