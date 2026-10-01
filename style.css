@@ -9,7 +9,7 @@
 @media(prefers-reduced-motion:reduce){.arena.impact,.combo-burst{animation:none}.arena{transition:none}}
 
 /* Four-frame NFT preview; the game uses the same atlas on canvas. */
-.animated-preview{width:155px;height:155px;margin:-9px auto 5px;background-image:url('nft-runner.png');background-size:300% 200%;background-repeat:no-repeat;animation:nft-run .444s steps(1,end) infinite;filter:drop-shadow(0 4px 9px #0005)}
+.animated-preview{width:155px;height:155px;margin:-9px auto 5px;background-image:url('nft-runner.png?v=4');background-size:300% 200%;background-repeat:no-repeat;animation:nft-run .444s steps(1,end) infinite;filter:drop-shadow(0 4px 9px #0005)}
 @keyframes nft-run{0%{background-position:0% 0%}25%{background-position:50% 0%}50%{background-position:100% 0%}75%{background-position:0% 100%}100%{background-position:0% 0%}}
 @media(max-width:700px){.animated-preview{width:125px;height:125px;margin:-4px auto 0}}
 @media(max-height:650px) and (min-width:701px){.animated-preview{width:100px;height:100px}}
