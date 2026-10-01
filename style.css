@@ -14,3 +14,9 @@
 @media(max-width:700px){.animated-preview{width:125px;height:125px;margin:-4px auto 0}}
 @media(max-height:650px) and (min-width:701px){.animated-preview{width:100px;height:100px}}
 @media(prefers-reduced-motion:reduce){.animated-preview{animation:none}}
+
+/* Atlas rows have a small registration offset: crop before the next hat edge. */
+.animated-preview{--sprite-size:155px;width:var(--sprite-size);height:calc(var(--sprite-size) * .96875);background-size:calc(var(--sprite-size) * 3) calc(var(--sprite-size) * 2)}
+@keyframes nft-run{0%{background-position:0% 0px}25%{background-position:50% 0px}50%{background-position:100% 0px}75%{background-position:0% calc(var(--sprite-size) * -.9765625)}100%{background-position:0% 0px}}
+@media(max-width:700px){.animated-preview{--sprite-size:125px;height:calc(var(--sprite-size) * .96875)}}
+@media(max-height:650px) and (min-width:701px){.animated-preview{--sprite-size:100px;height:calc(var(--sprite-size) * .96875)}}

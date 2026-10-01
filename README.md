@@ -47,3 +47,7 @@ Tony flagged v3 flippers and clothing. Inspection found rounded mitten-like wing
 Built-in image generation, same main agent, no independent AI review. Correction prompt: six-cell transparent atlas; replace round mitten-like appendages with exactly two natural flat tapered black flippers attached behind short sleeves; consistent V collar, shirt hem and chest igloo; four restrained run steps, happy sideways wave and surprised recoil; preserve original hat, glasses and colors; no background/glow/labels. All six poses visually inspected: mitten-like tips replaced with flat tapered wings; clean consistent collar and hem; hat fish and glasses preserved; all figures fit within their cells. RGBA inter-column gap samples are fully transparent. JavaScript syntax and diff checks passed. Live rendering checked after publication.
 
 Live v4 scale inspection also found the enlarged atlas feet overlapping the progress bar. Raised the atlas anchor by 8% of its box height and moved the ground shadow upward; canvas rules and hit timing remain unchanged.
+
+The generated second row begins slightly before the nominal 512px grid boundary. Canvas/preview source windows use 496px row height and 500px second-row origin to preserve the hat while excluding the adjacent-row strip. This is a render crop; the source image is retained.
+
+Added another 4% anchor clearance for the 5px running bob. Six opaque pose bounds clear the progress overlay in the desktop canvas calculation.
