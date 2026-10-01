@@ -5,8 +5,8 @@ class PenguEngine {
  move(dir){if(!this.done)this.lane=Math.max(0,Math.min(2,this.lane+dir))}
  get level(){return Math.min(10,1+Math.floor(this.time/12))}
  get phase(){const t=this.time%48;return t<10?0:t<20?1:t<32?2:3}
- get speed(){return (1+(this.level-1)*.12)*(this.phase===2?1.25:1)}
- get rowInterval(){return this.phase===2?.38:.9-(this.level-1)*.036}
+ get speed(){return 1+Math.min(108,this.time)/108*1.08}
+ get rowInterval(){return (.9-Math.min(108,this.time)/108*.324)*(this.phase===2?.58:1)}
  updatePrice(){this.energy=Math.max(0,Math.min(125,this.energy));this.price=.009*Math.pow(1/.009,this.energy/100);this.peak=Math.max(this.peak,this.price)}
  row(){const r=this.random,phase=this.phase,blocked=Math.floor(r()*3),safe=(blocked+1+Math.floor(r()*2))%3,other=3-blocked-safe;const hazard=phase===0?'cart':phase===1?'red':r()<.5?'bear':'rug';this.entities.push({lane:blocked,age:0,type:hazard,reward:false,penaltyOnly:phase===2});if(phase===2||r()<.35+this.level*.04)this.entities.push({lane:other,age:0,type:phase===2?'bear':'rug',reward:false,penaltyOnly:phase===2});if(phase===2)return;const type=r()<.08?'diamond':phase===0?'toy':phase===1?'coin':r()<.5?'green':'fish';this.entities.push({lane:safe,age:0,type,reward:true})}
  step(dt){if(this.done)return;dt=Math.min(.05,Math.max(0,dt));const previousPhase=this.phase;this.time+=dt;this.invulnerable=Math.max(0,this.invulnerable-dt);if(this.phase===2&&previousPhase!==2){this.entities=[];this.combo=0;this.nextRow=this.time;}if(this.time>=this.nextRow){this.row();this.nextRow=this.time+this.rowInterval}for(const e of this.entities){e.age+=dt*this.speed;if(e.age>=2.35&&!e.hit){e.hit=true;if(e.lane===this.lane)this.hit(e)}}this.entities=this.entities.filter(e=>e.age<2.7);this.updatePrice();if(this.health<=0)this.done=true}
