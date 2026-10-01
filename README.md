@@ -61,3 +61,9 @@ During the existing 30-second run, level increases every 3 seconds, capped at 10
 Validation: `node tests.cjs`, both JavaScript syntax checks and diff check passed. Tests cover all ten levels, monotonic speed/spawn interval, high-level collision timing, price=$1 at 100 energy, phone/desktop pointer mapping (including edges/two-lane jump), secondary-touch/right-click guards, pause, keyboard and restart. Live desktop canvas input/rendering checked after deployment; physical phone performance still pending.
 
 Synthetic difficulty check, 300 runs per strategy (instant lane changes and hazard avoidance, not human playtesting): 35% reward-target strategy median $0.084, 0/300 reaching $1; 55% median $0.154, 0/300 reaching $1; perfect reward selection median $0.929, 105/300 reaching $1. This retains a reachable but demanding target; higher speed's human difficulty needs actual playtesting.
+
+### v6：四語介面
+- 右上角提供繁體中文、English、한국어、日本語。預設中文，記住本機選擇；切換時保留遊戲進度。
+- 操作、故事、結算、分享草稿及下載戰績卡皆使用同一份 `i18n.js` 字典；史實來源連結與固定市值基準保持一致。
+- `node tests.cjs` 驗證四語字典、參數完整性、來源連結、結算及切換語言不改變進度；同時保留既有換線與 LEVEL 測試。
+- 韓文與日文為初版翻譯，尚未經母語玩家校閱；實體手機操作仍待玩家驗收。
