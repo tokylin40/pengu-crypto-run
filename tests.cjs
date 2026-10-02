@@ -57,3 +57,9 @@ const feedback=new E();feedback.hit({lane:1,type:'coin',reward:true});assert.ok(
 console.log('PASS: auto fullscreen attempt/fallback, settings pause, image retry, 10–120 FPS clocks, synchronized lane collision, actual price deltas');
 for(const time of [30,60,90,120]){const routes=new E(()=>.5);routes.time=time;for(let i=0;i<12;i++){routes.entities=[];routes.row();const blocked=new Set(routes.entities.filter(e=>!e.reward).map(e=>e.lane));assert.ok(blocked.size<=2);for(const reward of routes.entities.filter(e=>e.reward))assert.ok(!blocked.has(reward.lane));}assert.ok(routes.route.length<=4)}
 console.log('PASS: patterned rows always retain an unobstructed lane');
+
+// Denser rows still allow an 80–160 ms lane change before the next row.
+for(const time of [0,10,45,90,120]){const game=new E();game.time=time;assert.ok(game.rowInterval>=.192-1e-9);assert.ok(game.rowInterval<=(.76-Math.min(90,time)/90*.38)*(game.phase===2?.8:1)*.64);assert.ok(game.rowInterval>2/12.5)}
+for(const [type,energy] of [['toy',1.2],['coin',1.35],['green',1.5],['fish',1.2]]){const game=new E();game.hit({reward:true,type,lane:1});assert.equal(game.energy,energy);assert.ok(game.price>.0105)}
+const comboGame=new E();for(let i=0;i<100;i++)comboGame.hit({reward:true,type:'coin',lane:1});assert.ok(comboGame.energy<=180);assert.equal(comboGame.health,3);
+console.log('PASS: denser playable row spacing, stronger collection gains, capped combo rewards');

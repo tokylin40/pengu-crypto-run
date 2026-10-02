@@ -61,3 +61,71 @@ body.playing .top-actions button{white-space:nowrap;flex-shrink:0}body.playing #
 @media(max-width:700px){body.playing .game-toolbar{grid-template-columns:minmax(0,1fr) auto auto}body.playing .event{grid-column:1;grid-row:2;justify-content:flex-start;height:26px}body.playing .event span{display:none}body.playing #play-settings{grid-column:2;grid-row:2}body.playing #exit-play{grid-column:3;grid-row:2}body.playing .price-box strong{font-size:28px}body.playing .price-box{min-width:122px}body.playing .event strong{font-size:11px}body.playing #settings-toggle{padding:5px 8px;font-size:17px}}
 @media(max-height:450px){body.playing .event{display:none}body.playing #play-settings{grid-column:2}body.playing #settings-toggle{font-size:16px;padding:4px 8px}}
 #header-actions #fullscreen{display:none}
+
+/* V10.2: first-screen start and a single compact gameplay HUD. */
+body:not(.playing) .game-toolbar{display:none}
+body:not(.playing) .arena{height:calc(100svh - 175px);min-height:390px;max-height:680px;aspect-ratio:auto}
+body:not(.playing) .title-row{margin:0 0 10px}
+body:not(.playing) .eyebrow{display:none}
+body.playing .game-toolbar{display:block;padding:4px 8px}
+body.playing .game-toolbar .hud{min-height:58px}
+body.playing .right-hud{display:flex;flex-direction:column;align-items:flex-end;gap:3px;max-width:none}
+body.playing #clock{display:none}
+.play-buttons{display:flex;align-items:center;gap:5px;pointer-events:auto}
+body.playing #play-settings{position:relative;display:block;grid-column:auto;grid-row:auto}
+body.playing #settings-toggle,body.playing #exit-play,body.playing #pause{font-size:14px;line-height:1;padding:5px 7px;margin:0;border-radius:7px;min-height:28px}
+body.playing #play-settings #session-controls{right:0;min-width:145px}
+.arena>.event{position:absolute;top:12px;left:10px;right:10px;height:auto;display:flex;justify-content:center;align-items:center;gap:7px;z-index:2;pointer-events:none}
+.arena>.event small,.arena>.event span{display:none}
+.arena>.event strong{font-size:15px;padding:5px 12px;background:#082f59dd;border:1px solid #6abbe170;border-radius:12px;white-space:normal}
+body.playing .price-box #price-delta{top:calc(100% + 4px)}
+@media(max-width:700px){
+ body:not(.playing)>header{padding:8px 10px;min-height:56px}
+ body:not(.playing) .brand-icon{width:30px;height:34px}
+ body:not(.playing) .title-row{margin:0 2px 6px;min-height:30px}
+ body:not(.playing) h1{font-size:23px}
+ body:not(.playing) h1 span{display:none}
+ body:not(.playing) .personal-best{flex-direction:row;gap:6px;align-items:baseline}
+ body:not(.playing) .personal-best small{font-size:10px}
+ body:not(.playing) .personal-best strong{font-size:18px}
+ body:not(.playing) .arena{height:calc(100svh - 106px);min-height:350px;max-height:700px}
+ #start{padding:12px}
+ #start .start-card{padding:12px 16px;max-width:380px}
+ #start .animated-preview{--sprite-size:86px;margin:0 auto}
+ #start .nft-preview{width:80px;height:86px;margin:0 auto}
+ #start .pill{display:none}
+ #start h2{font-size:26px;margin:4px 0 6px}
+ #start h2 em{font-size:36px}
+ #start p{font-size:12px;line-height:1.55;margin:0 0 9px}
+ #start .legend{font-size:11px;gap:8px;margin-bottom:10px}
+ #start .primary{min-height:46px;padding:10px;font-size:18px;margin-bottom:10px}
+ #start .start-card>small{font-size:10px;line-height:1.5}
+ body.playing .game-toolbar{padding:3px 5px}
+ body.playing .game-toolbar .hud{min-height:58px;gap:4px;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+ body.playing .stage-label{padding:4px;font-size:12px;border:0;background:none}
+ body.playing .stage-label small{font-size:10px}
+ body.playing .price-box{min-width:112px;padding:3px 4px}
+ body.playing .price-box strong{font-size:30px}
+ body.playing .price-box small{font-size:7px;letter-spacing:0}
+ body.playing #hearts{font-size:15px;line-height:18px}
+ body.playing .play-buttons{gap:3px}
+ body.playing #settings-toggle,body.playing #exit-play{font-size:15px;padding:4px 6px;min-height:28px}
+ body.playing #pause{font-size:9px;padding:4px;min-height:28px}
+ body.playing .arena>.event{display:flex;height:auto;top:10px}
+ body.playing .arena>.event strong{font-size:12px}
+}
+@media(max-height:560px){
+ body:not(.playing) .arena{min-height:250px;height:calc(100svh - 95px)}
+ body:not(.playing)>header{padding-top:5px;padding-bottom:5px}
+ body:not(.playing) .title-row{display:none}
+ #start .animated-preview,#start .nft-preview,#start .pill{display:none}
+ #start .start-card{padding:10px 16px}
+ #start h2{font-size:23px;margin:0 0 5px}#start h2 em{font-size:30px}
+ #start p{font-size:12px;line-height:1.4;margin-bottom:6px}
+ #start .legend{margin-bottom:7px;font-size:11px}
+ #start .primary{padding:8px;min-height:42px;margin-bottom:7px}
+ #start .start-card>small{font-size:10px;line-height:1.3}
+ body.playing .game-toolbar .hud{min-height:46px}
+ body.playing .stage-label{font-size:12px;padding:2px 4px}
+ body.playing .price-box strong{font-size:28px}
+}
