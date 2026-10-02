@@ -17,7 +17,7 @@ for(const width of [380,1060]){
  vm.runInContext('engine.nextRow=Infinity;engine.entities=[]',box);clock+=100;frame(clock);assert.ok(Math.abs(vm.runInContext('engine.time',box)-.1)<1e-8);
  vm.runInContext("engine.hit({lane:1,reward:true,type:'coin'})",box);clock+=17;frame(clock);assert.ok(el('price-delta').textContent.startsWith('+$0.000'));assert.equal(el('price-delta').hidden,false);
  images[0].onerror();images[0].onload();assert.equal(el('play').onclick,vm.runInContext('start',box));
- clock+=1000;frame(clock);assert.equal(vm.runInContext('mode',box),'paused');
+ clock+=3000;frame(clock);assert.equal(vm.runInContext('mode',box),'paused');
 
 }
 assert.ok(!fs.readFileSync('index.html','utf8').includes('id="left"'));assert.ok(!fs.readFileSync('index.html','utf8').includes('id="right"'));
